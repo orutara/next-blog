@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-link {
+    @apply font-bold p-4 transition duration-150 hover:text-primary hover:bg-sub;
+  }
+}
