@@ -1,8 +1,8 @@
 const ErrorPage = () => {
   return (
-    <main className="main">
+    <div>
       <p>ページがありません。</p>
-    </main>
+    </div>
   );
 }
 
