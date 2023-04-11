@@ -1,14 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/libs/client";
+import Head from "next/head";
 
 const Home = ({ blog }) => {
   return (
+    <>
+    <Head>
+      <title>JSgraph | </title>
+      <meta name="description" content="Blog" />
+      <meta name="author" content="Blog" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </Head>
     <div>
-      <ul className="md:flex md:flex-wrap">
+      <ul className="mb-16 md:flex md:flex-wrap">
         {blog.map((blog) => (
-          <li key={blog.id} className="flex-[0_1_50%] p-3">
-            <article className="bg-white shadow-lg">
+          <li key={blog.id} className="flex-[0_1_50%] px-4 pb-8">
+            <article className="bg-white shadow-md transition duration-300 hover:shadow hover:translate-y-[1px]">
               <Link href={`/blog/${blog.id}`}>
                 <Image className="object-cover object-center w-full h-[200px]" src={blog.ogimage.url} width={blog.ogimage.width} height={blog.ogimage.height} alt={blog.title} />
               </Link>
@@ -19,14 +27,8 @@ const Home = ({ blog }) => {
           </li>
         ))}
       </ul>
-      {/* <ul>
-        {tag.map((tag) => (
-          <li key={tag.id}>
-            <Link href={`/tag/${tag.id}`}>{tag.tags}</Link>
-          </li>
-        ))}
-      </ul> */}
     </div>
+    </>
   );
 };
 
