@@ -1,4 +1,4 @@
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="bg-dark py-4">
       <div className="text-center">
@@ -7,5 +7,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer
