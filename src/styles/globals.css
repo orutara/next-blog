@@ -7,3 +7,53 @@
     @apply font-bold p-4 transition duration-150 hover:text-primary hover:bg-sub;
   }
 }
+
+/* 投稿ページ */
+.post h2 {
+  font-size: clamp(18px, 3vw, 20px);
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #42b983;
+  padding: 16px;
+  margin: 56px auto 40px;
+}
+
+.post h3 {
+  font-size: clamp(18px, 3vw, 20px);
+  font-weight: bold;
+  background-color: #f6f6f6;
+  border-left: 8px solid #42b983;
+  padding: 8px;
+  margin: 56px auto 40px;
+}
+
+.post h4 {
+  font-size: clamp(18px, 3vw, 20px);
+  font-weight: bold;
+  border-left: 8px solid #42b983;
+  padding: 8px;
+  margin: 56px auto 40px;
+}
+
+.post h5 {
+  font-size: clamp(18px, 3vw, 20px);
+  font-weight: bold;
+  color: #42b893;
+  margin: 56px auto 40px;
+}
+
+.post p {
+  margin-bottom: 56px;
+  line-height: 2;
+}
+
+.post img {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+/* p {
+  line-height: 1.75rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+} */

@@ -1,23 +1,47 @@
+import Image from "next/image";
+import Link from "next/link";
 import { client } from "@/libs/client";
-import styles from "@/pages/blog/blog.module.scss";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 
 const BlogId = ({ blog }) => {
+  // 日付のフォーマット
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  const day = dayjs.utc(blog.publishedAt).tz("Asia/Tokyo").format("YYYY/MM/DD");
+
   return (
-    <main className={styles.main}>
-      <h1 className={styles.title}>{blog.title}</h1>
-      <p className={styles.publishedAt}>{blog.publishedAt}</p>
-      <p>{blog.category && blog.category.name}</p>
-      <div
+    <div className="bg-white py-14 mb-16">
+      <p className="text-[13px] text-center text-mat mb-[20px] tracking-wider">
+        {day}
+      </p>
+      <h1 className="text-dark text-center text-[28px] font-bold mb-[16px]">
+        {blog.title}
+      </h1>
+      <p className="text-[13px] text-link text-center mb-[32px]">
+        <Link href={`/category/${blog.category && blog.category.name}`}>
+          {blog.category && blog.category.name}
+        </Link>
+      </p>
+      <Image
+        src={blog.ogimage.url}
+        alt={blog.title}
+        className="w-full max-h-[450px] object-cover object-center mb-[40px]"
+        width={750}
+        height={450}
+      />
+      <article
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
         }}
-        className={styles.post}
+        className="post px-4 lg:px-0 lg:mx-[40px]"
       />
-    </main>
+    </div>
   );
 };
 
-// 静的生成のためのパスを指定します
+// 静的生成のためのパスを指定
 export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blog" });
   const paths = data.contents.map((content) => `/blog/${content.id}`);
@@ -25,10 +49,11 @@ export const getStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-// データをテンプレートに受け渡す部分の処理を記述します
+// データをテンプレートに受け渡す部分の処理を記述
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const data = await client.get({ endpoint: "blog", contentId: id });
+  console.log(data);
 
   return {
     props: {
@@ -38,3 +63,12 @@ export const getStaticProps = async (context) => {
 };
 
 export default BlogId;
+
+// <div v-for="content in contents" :key="content.id" class="mb-5 md:mb-0">
+//   <img class="ogimage" :src="`${content.ogimage.url}`" alt="" />
+// </div>
+
+// <p class="category">{{ category && category.name }}</p> -->
+// <div class="container lg:px-12">
+//   <div class="post" v-html="body"></div>
+// </div>
