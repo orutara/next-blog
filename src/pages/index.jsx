@@ -2,18 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { client } from "@/libs/client";
 
-const Home = ({ blog, category, tag }) => {
+const Home = ({ blog }) => {
   return (
     <div>
       <ul className="md:flex md:flex-wrap">
         {blog.map((blog) => (
           <li key={blog.id} className="flex-[0_1_50%] p-3">
-            <div className="bg-white shadow-lg">
-              <Image className="object-cover object-center w-full h-[200px]" src={blog.ogimage.url} width={blog.ogimage.width} height={blog.ogimage.height} alt={blog.title} />
+            <article className="bg-white shadow-lg">
+              <Link href={`/blog/${blog.id}`}>
+                <Image className="object-cover object-center w-full h-[200px]" src={blog.ogimage.url} width={blog.ogimage.width} height={blog.ogimage.height} alt={blog.title} />
+              </Link>
               <div className="bg-white p-[16px] min-h-[88px] text-[15px]">
                 <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
               </div>
-            </div>
+            </article>
           </li>
         ))}
       </ul>
@@ -35,7 +37,6 @@ export const getStaticProps = async () => {
   // const categoryData = await client.get({ endpoint: "categories" });
   // タグコンテンツの取得
   // const tagData = await client.get({ endpoint: "tags" });
-  console.log(data.contents);
 
   return {
     props: {
