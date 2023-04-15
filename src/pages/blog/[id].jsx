@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Head from "next/head";
 import { client } from "@/libs/client";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -12,32 +13,39 @@ const BlogId = ({ blog }) => {
   const day = dayjs.utc(blog.publishedAt).tz("Asia/Tokyo").format("YYYY/MM/DD");
 
   return (
-    <div className="bg-white py-14 mb-16">
-      <p className="text-[13px] text-center text-mat mb-[20px] tracking-wider">
-        {day}
-      </p>
-      <h1 className="text-dark text-center text-[28px] font-bold mb-[16px]">
-        {blog.title}
-      </h1>
-      <p className="text-[13px] text-link text-center mb-[32px]">
-        <Link href={`/category/${blog.category && blog.category.name}`}>
-          {blog.category && blog.category.name}
-        </Link>
-      </p>
-      <Image
-        src={blog.ogimage.url}
-        alt={blog.title}
-        className="w-full max-h-[450px] object-cover object-center mb-[40px]"
-        width={750}
-        height={450}
-      />
-      <article
-        dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
-        }}
-        className="post px-4 lg:px-0 lg:mx-[40px]"
-      />
-    </div>
+    <>
+      <Head>
+        <title>{blog.title} | JSgraph - フロントエンド生存戦略</title>
+        <meta name="description" content={blog.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <div className="bg-white py-14 mb-16">
+        <p className="text-[13px] text-center text-mat mb-[20px] tracking-wider">
+          {day}
+        </p>
+        <h1 className="text-dark text-center text-[28px] font-bold mb-[16px]">
+          {blog.title}
+        </h1>
+        <p className="text-[13px] text-link text-center mb-[32px]">
+          <Link href={`/category/${blog.category && blog.category.name}`}>
+            {blog.category && blog.category.name}
+          </Link>
+        </p>
+        <Image
+          src={blog.ogimage.url}
+          alt={blog.title}
+          className="w-full max-h-[450px] object-cover object-center mb-[40px]"
+          width={750}
+          height={450}
+        />
+        <article
+          dangerouslySetInnerHTML={{
+            __html: `${blog.body}`,
+          }}
+          className="post px-4 lg:px-0 lg:mx-[40px]"
+        />
+      </div>
+    </>
   );
 };
 

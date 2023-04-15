@@ -7,9 +7,8 @@ const Home = ({ blog }) => {
   return (
     <>
     <Head>
-      <title>JSgraph | </title>
+      <title>JSgraph - フロントエンド生存戦略</title>
       <meta name="description" content="Blog" />
-      <meta name="author" content="Blog" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </Head>
     <div>
@@ -18,7 +17,7 @@ const Home = ({ blog }) => {
           <li key={blog.id} className="flex-[0_1_50%] px-4 pb-8">
             <article className="bg-white shadow-md transition duration-300 hover:shadow hover:translate-y-[1px]">
               <Link href={`/blog/${blog.id}`}>
-                <Image className="object-cover object-center w-full h-[200px]" src={blog.ogimage.url} width={blog.ogimage.width} height={blog.ogimage.height} alt={blog.title} />
+                <Image className="object-cover object-center w-full h-[200px] sm:h-[280px] md:h-[135px] lg:h-[200px]" src={blog.ogimage.url} width={blog.ogimage.width} height={blog.ogimage.height} alt={blog.title} />
               </Link>
               <div className="bg-white p-[16px] min-h-[88px] text-[15px]">
                 <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
