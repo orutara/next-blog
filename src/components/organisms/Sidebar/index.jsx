@@ -1,5 +1,5 @@
-import { Author } from '@/components/Author'
-import { CategoryList } from '@/components/CategoryList'
+import { Author } from '@/components/molecules/Author'
+import { CategoryList } from '@/components/molecules/CategoryList'
 
 export const Sidebar = () => {
   return (
