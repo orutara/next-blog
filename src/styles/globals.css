@@ -8,6 +8,16 @@
   }
 }
 
+@layer utilities {
+  .hidden-scrollbar {
+    -ms-overflow-style: none; /* IE, Edge 対応 */
+    scrollbar-width: none; /* Firefox 対応 */
+  }
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari 対応 */
+  }
+}
+
 /* 投稿ページ */
 .post h2 {
   font-size: clamp(18px, 3vw, 20px);
@@ -52,8 +62,3 @@
   max-width: 500px;
   margin: 0 auto;
 }
-/* p {
-  line-height: 1.75rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 1.5rem;
-} */
