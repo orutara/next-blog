@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import { Header } from '@/components/Header'
-import { Sidebar } from '@/components/Sidebar'
-import { Footer } from '@/components/Footer'
+import { Header } from '@/components/organisms/Header'
+import { Sidebar } from '@/components/organisms/Sidebar'
+import { Footer } from '@/components/organisms/Footer'
 
 class CustomDocument extends Document {
   render() {
@@ -9,6 +9,7 @@ class CustomDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         </Head>
         <body className="bg-[#f6f6f6] text-[#333333]">
           <Header />
