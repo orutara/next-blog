@@ -32,30 +32,54 @@ body {
 }
 
 /* 投稿ページ */
+.post h2
+.post h3,
+.post h4,
+.post h5,
+.post p, 
+.post li, 
+.post a
+{
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 .post h2 {
-  font-size: clamp(18px, 3vw, 20px);
+  font-size: clamp(18px, 3vw, 24px);
   font-weight: bold;
   color: #ffffff;
   background-color: #42b983;
-  padding: 16px;
+  padding-top: clamp(10px, 3vw, 20px);
+  padding-bottom: clamp(10px, 3vw, 20px);
+  padding-left: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
   margin: 56px auto 40px;
+  line-height: 40px;
+  letter-spacing: 0.05em;
 }
 
 .post h3 {
   font-size: clamp(18px, 3vw, 20px);
   font-weight: bold;
   background-color: #f6f6f6;
-  border-left: 8px solid #42b983;
-  padding: 8px;
+  border-left: 10px solid #42b983;
+  padding-top: clamp(10px, 3vw, 20px);
+  padding-bottom: clamp(10px, 3vw, 20px);
+  padding-left: clamp(20px, 3vw, 40px);
+  padding-right: clamp(20px, 3vw, 40px);
   margin: 56px auto 40px;
+  line-height: 40px;
+  letter-spacing: 0.1em;
 }
 
 .post h4 {
   font-size: clamp(18px, 3vw, 20px);
   font-weight: bold;
-  border-left: 8px solid #42b983;
-  padding: 8px;
+  border-left: 10px solid #42b983;
+  padding: 10px 16px;
   margin: 56px auto 40px;
+  line-height: 40px;
+  letter-spacing: 0.1em;
 }
 
 .post h5 {
@@ -63,11 +87,14 @@ body {
   font-weight: bold;
   color: #42b893;
   margin: 56px auto 40px;
+  letter-spacing: 0.06em;
 }
 
 .post p {
+  font-size: clamp(16px, 3vw, 17px);
   margin-bottom: 56px;
   line-height: 2;
+  letter-spacing: 0.06em;
 }
 
 .post img {
