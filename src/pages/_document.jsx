@@ -13,7 +13,7 @@ class CustomDocument extends Document {
         </Head>
         <body className="bg-[#f6f6f6] text-[#333333]">
           <Header />
-          <div className="max-w-6xl mx-auto md:flex md:justify-between h-[90%]">
+          <div className="max-w-6xl mx-auto md:flex md:justify-between min-h-[90%]">
             <main className="md:flex-[0_1_65%]">
               <Main />
             </main>
