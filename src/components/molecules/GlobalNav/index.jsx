@@ -4,16 +4,16 @@ import HomeIcon from '@mui/icons-material/Home';
 export const GlobalNav = () => {
   const navList = [
     {
-      name: "JavaScript",
-      categoryId: "javascript",
+      name: "Career",
+      categoryId: "career",
     },
     {
-      name: "Node.js",
-      categoryId: "nodejs",
+      name: "Code",
+      categoryId: "code",
     },
     {
-      name: "TypeScript",
-      categoryId: "typescript",
+      name: "Design",
+      categoryId: "design",
     },
   ];
 
