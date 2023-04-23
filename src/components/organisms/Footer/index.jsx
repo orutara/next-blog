@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer>
       <div className="bg-white">
-        <p className="text-[12px] text-center py-2">
+        <p className="text-[12px] text-center py-4">
           LPgraph では Storyset 様の素材を使用させていただいております<br />
           <a href="https://storyset.com" target="_blank" rel="noreferrer,noopener" className="text-[#1273EB]">illustrations by Storyset</a>
         </p>
