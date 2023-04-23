@@ -97,6 +97,11 @@ body {
   letter-spacing: 0.06em;
 }
 
+.post a {
+  font-weight: 600;
+  color: #337ab7;
+}
+
 .post img {
   width: 100%;
   max-width: 100%;
