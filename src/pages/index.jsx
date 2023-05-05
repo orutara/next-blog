@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "@/libs/client";
 import Head from "next/head";
 
-const Home = ({ blog }) => {
+const Home = (props) => {
   return (
     <>
       <Head>
@@ -13,21 +12,21 @@ const Home = ({ blog }) => {
       </Head>
       <div>
         <ul className="mb-16 md:flex md:flex-wrap">
-          {blog.map((blog) => (
-            <li key={blog.id} className="flex-[0_1_50%] px-4 pb-8">
+          {props.posts.map((post) => (
+            <li key={post.id} className="flex-[0_1_50%] px-4 pb-8">
               <article className="bg-white shadow-md transition duration-300 hover:shadow hover:translate-y-[1px]">
-                <Link href={`/blog/${blog.id}`}>
+                <Link href={`/blog/${post.slug}`}>
                   <Image
                     className="object-cover object-center w-full h-[200px] sm:h-[280px] md:h-[135px] lg:h-[200px]"
-                    src={blog.ogimage?.url ?? "/img_noimage.png"}
-                    width={blog.ogimage?.width ?? 750}
-                    height={blog.ogimage?.height ?? 450}
-                    alt={blog.title}
+                    src={post._embedded['wp:featuredmedia'][0].source_url ?? "/img_noimage.png"}
+                    width={post.ogimage?.width ?? 750}
+                    height={post.ogimage?.height ?? 450}
+                    alt={post.title.rendered}
                   />
                 </Link>
                 <div className="bg-white p-[16px] md:min-h-[100px] lg:min-h-[80px] text-[15px]">
-                  <Link href={`/blog/${blog.id}`} className="leading-relaxed">
-                    {blog.title}
+                  <Link href={`/blog/${post.slug}`} className="leading-relaxed">
+                    {post.title.rendered}
                   </Link>
                 </div>
               </article>
@@ -39,19 +38,14 @@ const Home = ({ blog }) => {
   );
 };
 
-// データをテンプレートに受け渡す部分の処理を記述します
+// データをテンプレートに受け渡す部分の処理を記述
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "blog" });
-  // カテゴリーコンテンツの取得
-  // const categoryData = await client.get({ endpoint: "categories" });
-  // タグコンテンツの取得
-  // const tagData = await client.get({ endpoint: "tags" });
+  const res = await fetch(`${process.env.WP_API_URL}/wp-json/wp/v2/posts?_embed`)
+  const posts = await res.json()
 
   return {
     props: {
-      blog: data.contents,
-      // category: categoryData.contents,
-      // tag: tagData.contents,
+      posts: posts,
     },
   };
 };

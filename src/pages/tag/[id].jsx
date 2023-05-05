@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { client } from "@/libs/client";
 
 const tagId = ({ blog }) => {
   // タグに紐付いたコンテンツがない場合に表示

@@ -1,4 +1,3 @@
-import { client } from "@/libs/client";
 import Link from "next/link"
 
 export const CategoryList = ({ category }) => {
